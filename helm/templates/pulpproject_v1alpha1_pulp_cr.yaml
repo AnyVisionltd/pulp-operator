@@ -5,13 +5,13 @@ metadata:
   namespace: {{ $.Release.Namespace }}
 spec:
  # The registry to grab the pulp image from.
- registry: gcr.io
+ registry: {{ default .Values.global.registry .Values.global.localRegistry }}
  # The project (organization or user) to grab the pulp image from
- project: rec-repo
+ project: {{ .Values.global.repository }}
  # The image name (repo name) for the pulp image.
- image: pulp
+ image: {{ .Values.images.pulp.image }}
  # The image tag for the pulp image. Quotes needed for '.' on certain K8s.
- tag: "stable"
+ tag: {{ .Values.images.pulp.tag }}
  # # Pulp settings.
  # pulp_settings:
  #    databases:

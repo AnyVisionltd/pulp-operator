@@ -1,0 +1,20 @@
+global:
+  localRegistry: ""
+  registry: "gcr.io"
+  repository: "rec-repo"
+  extraImages: false
+  services:
+    enabled: true
+  invocation:
+    enabled: false
+
+images:
+  pulp:
+    image: "pulp"
+    tag: "stable"
+
+## DO NOT REMOVE THESE LINES BELOW
+invocationImage:
+  registry: ""
+  imageName: "generatedName"
+  imageTag: "generatedString"
