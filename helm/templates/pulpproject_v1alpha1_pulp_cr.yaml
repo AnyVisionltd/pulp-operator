@@ -12,32 +12,32 @@ spec:
  image: pulp
  # The image tag for the pulp image. Quotes needed for '.' on certain K8s.
  tag: "stable"
- # Pulp settings.
- pulp_settings:
-    databases:
-      default:
-        HOST: postgres
-        ENGINE: django.db.backends.postgresql_psycopg2
-        NAME: pulp
-        USER: pulp
-        PASSWORD: pulp
-        PORT: 5432,
-        CONN_MAX_AGE: 0
-    debug: "True"
-    redis_host: redis
-    redis_port:  6379
-    redis_password: ''
-    content_origin: # pulp-operator will query the 1st address of the 1st k8s
-                    #  node. This suffices for most single node deployments.
-                    #  If on a cluster, you should set this manually until
-                    #  ingress(es) are implemented. Example:
-                    #  http://myserver.fqdn:24816
- # PostrgreSQL container settings for user accounts
- database_connection:
-   username: pulp
-   password: pulp
-   # Password for db admin user 'postgres'.
-   admin_password:
+ # # Pulp settings.
+ # pulp_settings:
+ #    databases:
+ #      default:
+ #        HOST: postgres
+ #        ENGINE: django.db.backends.postgresql_psycopg2
+ #        NAME: pulp
+ #        USER: pulp
+ #        PASSWORD: pulp
+ #        PORT: 5432,
+ #        CONN_MAX_AGE: 0
+ #    debug: "True"
+ #    redis_host: redis
+ #    redis_port:  6379
+ #    redis_password: ''
+ #    #content_origin: # pulp-operator will query the 1st address of the 1st k8s
+ #                    #  node. This suffices for most single node deployments.
+ #                    #  If on a cluster, you should set this manually until
+ #                    #  ingress(es) are implemented. Example:
+ #                    #  http://myserver.fqdn:24816
+ # # PostrgreSQL container settings for user accounts
+ # database_connection:
+ #   username: pulp
+ #   password: pulp
+ #   # Password for db admin user 'postgres'.
+ #   admin_password:
  # Configuration for the persistentVolumeClaim for /var/lib/pulp
  pulp_file_storage:
    # If your K8s cluster is only 1 node, and its StorageClass /
@@ -49,7 +49,7 @@ spec:
    #
    # Reference on which support ReadWriteMany:
    # https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
-   access_mode: "ReadWriteMany"
+   access_mode: "ReadWriteOnce"
  
    # How much space do you want to give Pulp for storing content under
    # /var/lib/pulp ?

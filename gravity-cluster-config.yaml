@@ -1,0 +1,6 @@
+kind: ClusterConfiguration
+version: v1
+spec:
+  global:
+    # port range to reserve for services with NodePort visibility
+    serviceNodePortRange: "20000-32767"
