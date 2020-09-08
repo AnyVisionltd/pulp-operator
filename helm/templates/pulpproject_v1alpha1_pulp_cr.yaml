@@ -5,9 +5,9 @@ metadata:
   namespace: {{ $.Release.Namespace }}
 spec:
  # The registry to grab the pulp image from.
- registry: quay.io
+ registry: gcr.io
  # The project (organization or user) to grab the pulp image from
- project: pulp
+ project: rec-repo
  # The image name (repo name) for the pulp image.
  image: pulp
  # The image tag for the pulp image. Quotes needed for '.' on certain K8s.
